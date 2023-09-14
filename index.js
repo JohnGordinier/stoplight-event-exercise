@@ -39,23 +39,25 @@ goBtn.addEventListener("mouseleave", function (event) {
 });
 //!/
 //!
-function redLight(event) {
-  stopLt.classList.add("stop");
-  slowLt.classList.remove("slow");
-  goLt.classList.remove("go");
-  console.log(`${event.target.textContent} light on`);
+function redLight() {
+  stopLt.classList.toggle("stop");
+  lights(stopLt, stopBtn, "stop");
 }
 
-function yellowLight(event) {
-  stopLt.classList.remove("stop");
-  slowLt.classList.add("slow");
-  goLt.classList.remove("go");
-  console.log(`${event.target.textContent} light on`);
+function yellowLight() {
+  slowLt.classList.toggle("slow");
+  lights(slowLt, slowBtn, "slow");
 }
 
-function greenLight(event) {
-  stopLt.classList.remove("stop");
-  slowLt.classList.remove("slow");
-  goLt.classList.add("go");
-  console.log(`${event.target.textContent} light on`);
+function greenLight() {
+  goLt.classList.toggle("go");
+  lights(goLt, goBtn, "go");
+}
+
+function lights(light, btn, color) {
+  if (light.className.includes(color)) {
+    console.log(`${btn.textContent} light on`);
+  } else {
+    console.log(`${btn.textContent} light off`);
+  }
 }
